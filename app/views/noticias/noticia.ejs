@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+	<html lang="pt-br">
+		<head>
+			<meta charset="utf-8"/>
+			<title>Notícia</title>
+		</head>
+		<style>
+			td{
+				border: 2px solid #000;
+				padding: 4px;
+			}
+		</style>
+	<body>
+
+		<h1>Notícia</h1>
+
+		<table>
+			<tr>
+				<td>ID</td>
+				<td>Título</td>
+				<td>Notícia</td>
+			</tr>
+			<tr>
+				<td><%= noticia[0].id_noticia %></td>
+				<td><%= noticia[0].titulo %></td>
+				<td><%= noticia[0].noticia %></td>
+			</tr>
+		</table>
+
+	</body>
+</html>
