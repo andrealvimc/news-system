@@ -1,20 +1,23 @@
-function Noticias(connection){
+function noticiasModel(connection){
     this._connection = connection;
 }
 
-Noticias.prototype.getNoticias = function(callback){
-    this._connection.query("select * from noticias", callback);
+noticiasModel.prototype.getNoticias = function(callback){
+    this._connection.query('SELECT * FROM noticias ORDER BY data_criacao DESC', callback);
 }
 
-Noticias.prototype.getNoticia = function(callback){
-    this._connection.query("SELECT * FROM noticias WHERE id_noticia = 2", callback);
+noticiasModel.prototype.getNoticia = function(id_noticia, callback){
+    this._connection.query('SELECT * FROM noticias WHERE id_noticia = ' + id_noticia.id_noticia, callback);
 }
 
-Noticias.prototype.salvarNoticia = function(noticia,callback){
-    this._connection.query("INSERT INTO noticias set ?", noticia, callback);
-    console.log('Noticia adicionada')
+noticiasModel.prototype.salvarNoticia = function(noticia, callback){
+    this._connection.query('INSERT INTO noticias SET ?', noticia, callback);
 }
 
-module.exports = function(app){
-    return Noticias;
+noticiasModel.prototype.get5UltimasNoticias = function(callback){
+    this._connection.query('SELECT * FROM noticias ORDER BY data_criacao DESC LIMIT 5', callback);
+}
+
+module.exports = function(){
+    return noticiasModel;
 }
