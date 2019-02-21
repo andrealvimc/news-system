@@ -12,7 +12,7 @@ Noticias.prototype.getNoticia = function(callback){
 
 Noticias.prototype.salvarNoticia = function(noticia,callback){
     this._connection.query("INSERT INTO noticias set ?", noticia, callback);
-    console.log('Noticia adiciona')
+    console.log('Noticia adicionada')
 }
 
 module.exports = function(app){
